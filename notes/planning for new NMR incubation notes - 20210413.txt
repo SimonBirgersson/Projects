@@ -7,14 +7,21 @@ the goal for today is to:
 
 New incubations:
     - Total reaction volume: 5ml
-    - Buffer: 50mM NaAc 5.3
+    - Buffer: 50mM NaAc pH 5.0
     - Temperature: 40°C
     - time: [0 4] h aliquots for HPLC. stop incubation at 4h
     - substrate: M4 10mM -> 10 mM * 5*10^-3 l * 666.222 g/mol = 33.3110 mg needed
-    - enzyme: wt TrMan5A
+    - enzyme: wt TrMan5A stock is 614.8736 +/- 148.2518 nkat/ml against 0.5v% LBG at 40°C in 50mM NaAc pH 5.0 determined on 20210413. this means that adding 407ul of enzyme -> 50.0508 nkt/ml in final volume
     - acceptor: 10v% allyl-OH = 500 ul
     - final volume for NMR sample: 5000-(150*2)=4700 ul
-   
+----------------------------------------------------------------   
+Sample set up:
+2500 ul of M4 20mM stock, dissolved in 50mM NaAc pH 5.0
+XXX of TrMan5A 1mg/ml stock
+500 ul of allyl-OH
+fill up to 5000 ul with 50mM NaAc pH 5.0
+-----------------------------------------------------------------
+
 according to Butler et al 2021, hexose yield of Allyl conjugate is 4.05 +/- 0.04 mol % after 4h yields around 2.56 mg/ml of conjugate  in final sample, which is very low.
 
 #----------------Final concentrations calculation------------------------
