@@ -1,0 +1,322 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{Santos2010}{article}{}
+      \name{author}{6}{}{%
+        {{hash=5dc20192da957b90866e8b3152e69bec}{%
+           family={Santos},
+           familyi={S\bibinitperiod},
+           given={Camila\bibnamedelima Ramos},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=d1cc1d0e9915dd157a88a3e0ae4fdf14}{%
+           family={Squina},
+           familyi={S\bibinitperiod},
+           given={Fabio\bibnamedelima Marcio},
+           giveni={F\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=e92b74290a49bef8475fd49807ce632b}{%
+           family={Navarro},
+           familyi={N\bibinitperiod},
+           given={Andreia\bibnamedelima Meza},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=b1ced658a8d991fff4534ff1bb25af67}{%
+           family={Ruller},
+           familyi={R\bibinitperiod},
+           given={Roberto},
+           giveni={R\bibinitperiod}}}%
+        {{hash=06d145a71d4b48e72109b619cabff1f5}{%
+           family={Prade},
+           familyi={P\bibinitperiod},
+           given={Rolf},
+           giveni={R\bibinitperiod}}}%
+        {{hash=358cf7dd3b9f24d87748af57aeece734}{%
+           family={Murakami},
+           familyi={M\bibinitperiod},
+           given={Mario\bibnamedelima Tyago},
+           giveni={M\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{a22c689b686a5eaa83920d49ce2b7dd6}
+      \strng{fullhash}{df8308dc6447c35bd9506f5440a81348}
+      \strng{bibnamehash}{a22c689b686a5eaa83920d49ce2b7dd6}
+      \strng{authorbibnamehash}{a22c689b686a5eaa83920d49ce2b7dd6}
+      \strng{authornamehash}{a22c689b686a5eaa83920d49ce2b7dd6}
+      \strng{authorfullhash}{df8308dc6447c35bd9506f5440a81348}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Endo-1,4-$\beta$-d-mannanases play key roles in seed germination and fruit ripening and have recently received much attention owing to their potential applications in the food, detergent and kraft pulp industries. In order to delineate their structural determinants for specificity and stability, X-ray crystallographic investigations combined with detailed functional studies are being performed. In this work, crystals of the catalytic domain of a hyperthermostable endo-1,4-Β - d-mannanase from Thermotoga petrophila RKU-1 were obtained from three different conditions, resulting in two crystalline forms. Crystals from conditions with phosphate or citrate salts as precipitant (CryP) belonged to space group P212121, with unit-cell parameters a = 58.76, b = 87.99, c = 97.34 {Å}, while a crystal from a condition with ethanol as precipitant (CryE) belonged to space group I212121, with unit-cell parameters a = 91.03, b = 89.97, c = 97.89 {Å}. CryP and CryE diffracted to resolutions of 1.40 and 1.45 {Å}, respectively. © 2010 International Union of Crystallography All rights reserved.}
+      \field{issn}{17443091}
+      \field{journaltitle}{Acta Crystallographica Section F: Structural Biology and Crystallization Communications}
+      \field{number}{9}
+      \field{title}{{Cloning, expression, purification, crystallization and preliminary X-ray diffraction studies of the catalytic domain of a hyperthermostable endo-1,4-$\beta$-d-mannanase from Thermotoga petrophila RKU-1}}
+      \field{volume}{66}
+      \field{year}{2010}
+      \field{pages}{1078\bibrangedash 1081}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1107/S1744309110029131
+      \endverb
+      \verb{file}
+      \verb :C\:/Users/User/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Santos et al. - 2010 - Cloning, expression, purification, crystallization and preliminary X-ray diffraction studies of the catalytic dom.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb www.pdb.org
+      \endverb
+      \verb{url}
+      \verb www.pdb.org
+      \endverb
+      \keyw{4-$\beta$-d-mannanases,Thermotoga petrophila RKU-1,endo-1,thermostability}
+    \endentry
+    \entry{DosSantos2012}{article}{}
+      \name{author}{9}{}{%
+        {{hash=5b75457b8d1d3a9f8a4a81b54b1b55b9}{%
+           family={Santos},
+           familyi={S\bibinitperiod},
+           given={Camila\bibnamedelima Ramos},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           prefix={dos},
+           prefixi={d\bibinitperiod}}}%
+        {{hash=e2b697593ab5cec711fe240474beff26}{%
+           family={Paiva},
+           familyi={P\bibinitperiod},
+           given={Joice\bibnamedelima Helena},
+           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=d7c60e97f5f648d8a0ec576affa20e9f}{%
+           family={Meza},
+           familyi={M\bibinitperiod},
+           given={Andreia\bibnamedelima Navarro},
+           giveni={A\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=92424d3406e82de3a4dc7710f9a70e74}{%
+           family={Cota},
+           familyi={C\bibinitperiod},
+           given={Junio},
+           giveni={J\bibinitperiod}}}%
+        {{hash=cc7b6f73400e9cb57c6955558157e6c7}{%
+           family={Alvarez},
+           familyi={A\bibinitperiod},
+           given={Thabata\bibnamedelima Maria},
+           giveni={T\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=b1ced658a8d991fff4534ff1bb25af67}{%
+           family={Ruller},
+           familyi={R\bibinitperiod},
+           given={Roberto},
+           giveni={R\bibinitperiod}}}%
+        {{hash=6b306a065ce678d47d34d8a8cb16986c}{%
+           family={Prade},
+           familyi={P\bibinitperiod},
+           given={Rolf\bibnamedelima Alexander},
+           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=d1cc1d0e9915dd157a88a3e0ae4fdf14}{%
+           family={Squina},
+           familyi={S\bibinitperiod},
+           given={Fabio\bibnamedelima Marcio},
+           giveni={F\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=358cf7dd3b9f24d87748af57aeece734}{%
+           family={Murakami},
+           familyi={M\bibinitperiod},
+           given={Mario\bibnamedelima Tyago},
+           giveni={M\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Academic Press}%
+      }
+      \strng{namehash}{06421e4953831f08424c4d6bff603f24}
+      \strng{fullhash}{bc96e32ea29c5eaac0e8401697ecb9e1}
+      \strng{bibnamehash}{06421e4953831f08424c4d6bff603f24}
+      \strng{authorbibnamehash}{06421e4953831f08424c4d6bff603f24}
+      \strng{authornamehash}{06421e4953831f08424c4d6bff603f24}
+      \strng{authorfullhash}{bc96e32ea29c5eaac0e8401697ecb9e1}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The breakdown of $\beta$-1,4-mannoside linkages in a variety of mannan-containing polysaccharides is of great importance in industrial processes such as kraft pulp delignification, food processing and production of second-generation biofuels, which puts a premium on studies regarding the prospection and engineering of $\beta$-mannanases. In this work, a two-domain $\beta$-mannanase from Thermotoga petrophila that encompasses a GH5 catalytic domain with a C-terminal CBM27 accessory domain, was functionally and structurally characterized. Kinetic and thermal denaturation experiments showed that the CBM27 domain provided thermo-protection to the catalytic domain, while no contribution on enzymatic activity was observed. The structure of the catalytic domain determined by SIRAS revealed a canonical ($\alpha$/$\beta$) 8-barrel scaffold surrounded by loops and short helices that form the catalytic interface. Several structurally related ligand molecules interacting with TpMan were solved at high-resolution and resulted in a wide-range representation of the subsites forming the active-site cleft with residues W134, E198, R200, E235, H283 and W284 directly involved in glucose binding. © 2011 Elsevier Inc.}
+      \field{issn}{10478477}
+      \field{journaltitle}{Journal of Structural Biology}
+      \field{month}{2}
+      \field{number}{2}
+      \field{title}{{Molecular insights into substrate specificity and thermal stability of a bacterial GH5-CBM27 endo-1,4-$\beta$-d-mannanase}}
+      \field{volume}{177}
+      \field{year}{2012}
+      \field{pages}{469\bibrangedash 476}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1016/j.jsb.2011.11.021
+      \endverb
+      \verb{file}
+      \verb :C\:/Users/User/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/dos Santos et al. - 2012 - Molecular insights into substrate specificity and thermal stability of a bacterial GH5-CBM27 endo-1,4-$\beta$-d-man.pdf:pdf
+      \endverb
+      \keyw{4-$\beta$-mannosidase,Carbohydrate binding module 27,Crystal structure,Glycoside hydrolase family 5,Mannan endo-1,Substrate recognition,Thermotoga petrophila RKU-1}
+    \endentry
+    \entry{DaSilva2020}{article}{}
+      \name{author}{8}{}{%
+        {{hash=083a422bccb0ab3bf877e0388b4d55ee}{%
+           family={Silva},
+           familyi={S\bibinitperiod},
+           given={Viviam\bibnamedelima M.},
+           giveni={V\bibinitperiod\bibinitdelim M\bibinitperiod},
+           prefix={da},
+           prefixi={d\bibinitperiod}}}%
+        {{hash=13cf293f3c810a4a21788beb5e8fa728}{%
+           family={Cabral},
+           familyi={C\bibinitperiod},
+           given={Aline\bibnamedelima D.},
+           giveni={A\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=e9dec225543d5364a755606f7929b2da}{%
+           family={Speran{ç}a},
+           familyi={S\bibinitperiod},
+           given={Marcia\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=f07e1056b05df823b599616ceecf1fce}{%
+           family={Squina},
+           familyi={S\bibinitperiod},
+           given={Fabio\bibnamedelima M.},
+           giveni={F\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=729207f3125525726ec86f7d1c9d3f88}{%
+           family={Muniz},
+           familyi={M\bibinitperiod},
+           given={Jo{ã}o\bibnamedelimb Renato\bibnamedelima C.},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=e481f2037c40c84862591173a4ef202f}{%
+           family={Martin},
+           familyi={M\bibinitperiod},
+           given={Lydie},
+           giveni={L\bibinitperiod}}}%
+        {{hash=adba993e0a335ffa1bd35d65908abf5f}{%
+           family={Nicolet},
+           familyi={N\bibinitperiod},
+           given={Yvain},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=83c8c02541202379622900ec72d8ed00}{%
+           family={Garcia},
+           familyi={G\bibinitperiod},
+           given={Wanius},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier B.V.}%
+      }
+      \strng{namehash}{458ac4c35100272609da69d0b448d8ac}
+      \strng{fullhash}{8fcf360e0f6fcf8706e2a9e0de798638}
+      \strng{bibnamehash}{458ac4c35100272609da69d0b448d8ac}
+      \strng{authorbibnamehash}{458ac4c35100272609da69d0b448d8ac}
+      \strng{authornamehash}{458ac4c35100272609da69d0b448d8ac}
+      \strng{authorfullhash}{8fcf360e0f6fcf8706e2a9e0de798638}
+      \field{sortinit}{3}
+      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The endo-$\beta$-1,4-mannanase from the hyperthermostable bacterium Thermotoga petrophila (TpMan) is an enzyme that catalyzes the hydrolysis of mannan and heteromannan polysaccharides. Of the three domains that comprise TpMan, the N-terminal GH5 catalytic domain and the C-terminal carbohydrate-binding domain are connected through a central ancillary domain of unknown structure and function. In this study, we report the partial crystal structure of the TpMan at 1.45 {Å} resolution, so far, the first modular hyperthermostable endo-$\beta$-1,4-mannanase structure determined. The structure exhibits two domains, a ($\beta$/$\alpha$)8-barrel GH5 catalytic domain connected via a linker to the central domain with an immunoglobulin-like $\beta$-sandwich fold formed of seven $\beta$-strands. Functional analysis showed that whereas the immunoglobulin-like domain does not have the carbohydrate-binding function, it stacks on the GH5 catalytic domain acting as a thermostabilizing domain and allowing operation at hyperthermophilic conditions. The carbohydrate-binding domain is absent in the crystal structure most likely due to its high flexibility around the immunoglobulin-like domain which may act also as a pivot. These results represent new structural and functional information useful on biotechnological applications for biofuel and food industries.}
+      \field{issn}{18781454}
+      \field{journaltitle}{Biochimica et Biophysica Acta - Proteins and Proteomics}
+      \field{month}{8}
+      \field{number}{8}
+      \field{title}{{High-resolution structure of a modular hyperthermostable endo-$\beta$-1,4-mannanase from Thermotoga petrophila: The ancillary immunoglobulin-like module is a thermostabilizing domain}}
+      \field{volume}{1868}
+      \field{year}{2020}
+      \field{pages}{140437}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.bbapap.2020.140437
+      \endverb
+      \verb{file}
+      \verb :C\:/Users/User/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/da Silva et al. - 2020 - High-resolution structure of a modular hyperthermostable endo-$\beta$-1,4-mannanase from Thermotoga petrophila The an.pdf:pdf
+      \endverb
+      \keyw{Hyperthermostability,Immunoglobulin-like domain,Thermostabilizing domain}
+    \endentry
+    \entry{Zang2015}{article}{}
+      \name{author}{8}{}{%
+        {{hash=e9bf980fd8ff8bbe53ce709b74daa826}{%
+           family={Zang},
+           familyi={Z\bibinitperiod},
+           given={Haoyu},
+           giveni={H\bibinitperiod}}}%
+        {{hash=b0738d07b4fb6b3f8ce3c51efa0c2e19}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={Shanshan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=abb3d3a0f9137887de246772f92e7ba7}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Huijun},
+           giveni={H\bibinitperiod}}}%
+        {{hash=de358a602c62e713f722c0751ff694fe}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Weiduo},
+           giveni={W\bibinitperiod}}}%
+        {{hash=8f37be03489d38241f9ae51ed6300cac}{%
+           family={Shao},
+           familyi={S\bibinitperiod},
+           given={Xiankun},
+           giveni={X\bibinitperiod}}}%
+        {{hash=599548d33a64c5be349ad05d85164ddb}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Liming},
+           giveni={L\bibinitperiod}}}%
+        {{hash=d42323915e5ae07ee7e0271a3fd613ce}{%
+           family={Rajer},
+           familyi={R\bibinitperiod},
+           given={Faheem\bibnamedelima Uddin},
+           giveni={F\bibinitperiod\bibinitdelim U\bibinitperiod}}}%
+        {{hash=dd72e0d40a814de43a308040a68c1505}{%
+           family={Gao},
+           familyi={G\bibinitperiod},
+           given={Xuewen},
+           giveni={X\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier Inc.}%
+      }
+      \strng{namehash}{34ee6191f9a4dbcf12892875fa3a28ab}
+      \strng{fullhash}{46c2c1aafc3b0d2767f533edfaaf80cb}
+      \strng{bibnamehash}{34ee6191f9a4dbcf12892875fa3a28ab}
+      \strng{authorbibnamehash}{34ee6191f9a4dbcf12892875fa3a28ab}
+      \strng{authornamehash}{34ee6191f9a4dbcf12892875fa3a28ab}
+      \strng{authorfullhash}{46c2c1aafc3b0d2767f533edfaaf80cb}
+      \field{sortinit}{4}
+      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A novel thermostable mannanase from a newly isolated Bacillus pumilus GBSW19 has been identified, expressed, purified and characterized. The enzyme shows a structure comprising a 28 amino acid signal peptide, a glycoside hydrolase family 5 (GH5) catalytic domain and no carbohydrate-binding module. The recombinant mannanase has molecular weight of 45. kDa with an optimal pH around 6.5 and is stable in the range from pH 5-11. Meanwhile, the optimal temperature is around 65. °C, and it retains 50\% relative activity at 60. °C for 12. h. In addition, the purified enzyme can be activated by several ions and organic solvents and is resistant to detergents. Bpman5 can efficiently convert locus bean gum to mainly M2, M3 and M5, and hydrolyze manno-oligosaccharides with a minimum DP of 3. Further exploration of the optimum condition using HPLC to prepare oligosaccharides from locust bean gum was obtained as 10. mg/ml locust bean gum incubated with 10. U/mg enzyme at 50. °C for 24. h. By using this enzyme, locust bean gum can be utilized to generate high value-added oligosaccharides with a DP of 2-6.}
+      \field{annotation}{Assay determining optimal temp for bacillus pumilis. Temp optimum for BpMan5A: 65C pH optimum: pH 6.5 temperature stability inactive after 30min at 70C. Relatively stable below that. stable at pH ranging from 6 -> 10}
+      \field{issn}{18790909}
+      \field{journaltitle}{Enzyme and Microbial Technology}
+      \field{month}{10}
+      \field{title}{{A novel thermostable GH5_7 $\beta$-mannanase from Bacillus pumilus GBSW19 and its application in manno-oligosaccharides (MOS) production}}
+      \field{volume}{78}
+      \field{year}{2015}
+      \field{pages}{1\bibrangedash 9}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1016/j.enzmictec.2015.06.007
+      \endverb
+      \verb{file}
+      \verb :C\:/Users/User/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Zang et al. - 2015 - A novel thermostable GH5_7 $\beta$-mannanase from Bacillus pumilus GBSW19 and its application in manno-oligosaccharides (.pdf:pdf
+      \endverb
+      \keyw{Endo-$\beta$-1,4-mannanase,Enzyme properties,Glycoside hydrolase family 5 (GH5),Oligosaccharides preparation,Recombinant expression}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

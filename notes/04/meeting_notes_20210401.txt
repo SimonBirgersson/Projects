@@ -1,0 +1,39 @@
+meeting notes 20210401
+----------------------------
+can use our sample, old 5ml scale HPLC synergy transfer reaction replicate #1
+  - substrate: 3 w/v% low viscosity LBG
+  - acceptor: 10 v% allyl alcohol
+  - enzyme (beta-man): wt TrMan5A 50nkat/ml
+  - enzyme (alga-gal): Aga27A 50nkat/ml
+  - Buffer: 50mM NaAc pH 5.0
+  - time points: [0 1 2 4 5 8 24]h, final reaction stopped at 24h
+  - temp: 40 °C
+  - aliquots: 150 ul for each time point, for HPLC later on
+
+(data from 1ml incubation available in figure)
+----------------------------
+NMR experiment
+
+Basel has a pulse sequence for 2D 13C 1H, on 500MHz Bruker spectrometer at CAS
+  - coupled 13C experiment using gated decoupling: get J(C1-H1) coupling constant
+  - COSY, TOSCY, HMBC, HSQC, NOESY for chemical shift assignment
+  - 1D 1H experiment
+  - 1D 13C experiment
+
+first look will be of 1H spectrum on 20210409, Monica has booked time for herself
+  sample prep: 
+    - speed vac to half volume to evaporate allyl-alcohol
+    - Freeze dry x2 (Emil A will show me) until complete evaporation,
+    - then resuspend in 600 ul D2O both times (available on SB:s bench)
+Monica is in lab 20, consider getting NMR lab access beforehand
+---------------------------
+calculate approximate concentration fo sample extrapolating from 1 ml incubation (1 ml 6h should be used, look for total conjugate concentration)
+
+  ideally 600 ul with 10 mg/ml product, we won't get anywhere close though (we have around 3 mg/ml over 3 species of conjugate).
+
+  Can always increase acq time for better S/N
+
+  Can potentially use new incubation with M4 if this doesn't work
+
+We've booked the 500MHz Bruker NMR spectrometer at CAS 20210423-20210424 for the 2D experiment.
+----------------------------
