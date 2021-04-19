@@ -5,7 +5,7 @@ the goal for today is to:
     - Check in with monica for tomorrow
     - start up new incubations for potential new NMR experiments, preceeded by HPLC
 
-New incubations:
+New incubations (all gathered from allyl paper manuscript) 
     - Total reaction volume: 5ml
     - Buffer: 50mM NaAc pH 5.0
     - Temperature: 40°C
@@ -22,7 +22,7 @@ XXX of TrMan5A 1mg/ml stock
 fill up to 5000 ul with 50mM NaAc pH 5.0
 -----------------------------------------------------------------
 
-according to Butler et al 2021, hexose yield of Allyl conjugate is 4.05 +/- 0.04 mol % after 4h yields around 2.56 mg/ml of conjugate  in final sample, which is very low.
+according to Butler et al 2021, hexose yield of Allyl conjugate is 4.05 +/- 0.04 mol% after 4h. This yields around 2.56 mg/ml of conjugate  in final NMR sample, which is very low (ideal is 10mg/ml according to Monica).
 
 #----------------Final concentrations calculation------------------------
 >> [0.1 0.49 0.18]*10^-3 % final molar concentrations of M1, M2, M3 in mM from table 6 in Butler et al.
