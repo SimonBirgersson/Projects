@@ -15,7 +15,7 @@ data = np.array([[0.091, 0.187, 0.442, 1.030, 1.264, 0.092, 0.227, 0.174],
 std_blank = data[3:6,5,np.newaxis] # needed to add a new dimension to the vector, therefore "newaxis"
 std_abs   = data[0:3,0:5]-std_blank # slice of full data matrix gets std absorbances minus blank
 std_c     = [5, 10, 20, 40, 50]
-print(std_abs)
+
 
 sample_TpMan5A_stability_abs=data[3:6,0:1]
 sample_BpMan5A_stability_abs=data[3:6,0:1]
