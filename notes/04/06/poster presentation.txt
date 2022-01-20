@@ -1,0 +1,27 @@
+poster presentation.txt
+
+
+
+Hello my name is Simon Birgersson, and I'm din the second year of my Phd at Lund university, at the department of Biochemistry and structural biology. 
+
+I primarily work with enzymes, my research is focused on Glycoside hydrolases and the reaction pathway known as Transglycosylation.
+
+
+
+
+
+
+
+
+We're aiming to use galactoglucomannan from pulping mill waste streams as substrate, but our current model substrate is Locust bean gum
+
+we've recently employed an alpha-galactosidase from guar as well in a coincubation with TrMan5A and the results showed a two fold increase in mannysyl transglycosylation products, and with the added transglycosylation of Aga27A, we saw a fourfold increase in total yield, from 2.2% to 8.8% of total glycosyl content.
+
+
+Figure S10: Carbon spectra of sample T. the bottom spectrum (blue), shows a normal 13C spectrum, and the top (red)) shiws tecoupled 13C spectrum used for determining 1J(C-1, H-1) scalar coupling constant. the peaks in tge red soectrum around the anomeric carbon peak at 101.827 ppm  in the blue spectrum report on the configuration of the anomeric carbon (Harjunpää et al). Lineshape analysis was utlized to separate the overlapping peaks in the red spectrum directly to the left of the anomeric peak in the blue spectrum alled for determination of the scalar coupling constant to ~160 Hz, which indicated that the correpsong carbon i beta-configured.
+
+Figure S11: determination of allyl-glycoside product bond configuration using 2D 1H-13C NMR for sample L.  Overlay of 1H-13C HMBC (blue indicates positive signals) and HSQC (red indicates positive signals). horizontal lines is drawn at δC 100.6 ppm, along a line that shows cross peaks in HSQC to to the anomeric proton signal for allyl-alpha-galactopyranoside, indicating a direct bond J-coupling between this carbon and the H1 proton. There are also cross peaks to corresponding to HA (δH 4.37 ppm) and HA' (δH 4.252 ppm) in HMBC, indicating formation of the glycosidic linkage between the allyl group and the galactosyl unit. All spectra were collected in 25°C in D2O.
+
+The first column from the left denotes the peaks corresponding to those in figure S8. The second column presents the proposed atoms for each peak,
+
+The anomeric configuration of the allyl glycoside product can be determined by measuring the 1JC-1, H-1  scalar coupling constant (Harjunpää et al 1995) in a coupled 1D 13C NMR experiment. Given the complexity of the sample, there is a lot of spectral overlap. Therefore, spectrum analysis in the form of peak moving and fitting using the MestReNova (Wilcott et al 2009) software was employed to resolve the split peaks required to determine 1JC-1, H-1. Through this procedure it was possible identify two peaks around δC = 102.476 ppm and δC = 102.557 ppm, the first being a split from the anomeric allyl mannopyranoside peak and the other belonging to anomeric signals from internal mannotriose H-1, as well as terminal mannobiose and mannotriose H-1, respectively. The peak fitting showed a residual error comparable to that of well resolved peaks. The distance between the fitted peak and the other, split at δC = 101.22 ppm, which corresponds to 1JC-1, H-1 was measured to be approximately 160 Hz, indicating a β-configuration in contrast to 170 Hz indicating an α-configuration (Harjunpää). This resolved peak showed very weak signal, but deemed sufficient in terms of S/N. This is deemed sufficient evidence of the β configuration at the anomeric position. Furthermore, if a hypothetical peak is artificially inserted at 170 Hz from the peak at δC = 98.38 ppm, i.e an α configuration, such peak would be outside of the region where the peaks were fitted, hence there is no possibility that the allyl compounds are α-linked. 
