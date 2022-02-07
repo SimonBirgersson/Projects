@@ -1,8 +1,10 @@
 # HPAEC analysis module 220207
 import os
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import seaborn as sns
 
 
 # function that checks directory indicated in PATH for txt files, the grabs first and third column of data,
@@ -15,7 +17,7 @@ def load_data(PATH, skip_rows):
     ):
         # checks if file ends with .txt AND is the first iteration of the loop:
         if file.endswith(".txt") and i == 0:
-            print("fetching data for %s..." % file)
+            print("fetching data from %s..." % file)
             # initialize variable for storing filenames
             filename = []
             # loads time and signal vector for the first injection
@@ -25,7 +27,7 @@ def load_data(PATH, skip_rows):
 
         # if the the filetype is .txt but not the first iteration of the loop:
         elif file.endswith(".txt"):
-            print("fetching data for %s..." % file)
+            print("fetching data from %s..." % file)
             # adds a new colum containing the signal vector for the next injection
             data = np.append(
                 data,
@@ -45,3 +47,36 @@ def load_data(PATH, skip_rows):
     df = pd.DataFrame(data, columns=["time [min]"] + filename)
 
     return df
+
+
+# plots chromatograms in a vertical plot, with subplots as titled in "plots", containing chromatograms from dataframe according to
+def plot_chromatograms(data, plots, chromatograms):
+
+    # size of plot and subplot dimensions
+    f = plt.figure(figsize=(9, len(plots) * 6))
+    gs = f.add_gridspec(len(plots), 1)
+
+    # first for-loop iterates over titles of subplots
+    for ind, subplot in enumerate(plots):
+
+        # style of subplot and position
+        with sns.axes_style("darkgrid"):
+            ax = f.add_subplot(gs[ind, 0])
+
+            # second for-loop iterates over ind:th list ofchromatograms and plots them in the current subplot
+            for column in chromatograms[ind][:]:
+                data.plot(
+                    kind="line",
+                    x="time [min]",
+                    y=column,
+                    label=column,
+                    ax=plt.gca(),
+                )
+
+        # show data between 1 and 5 minutes
+        plt.xlim([1.0, 5])
+        # plt.xlabel("time [min]")
+        plt.legend(loc="best")
+        plt.ylabel("signal [nC]")
+        plt.title(subplot)
+        f.tight_layout()
