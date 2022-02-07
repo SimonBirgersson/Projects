@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+import HPAEC_analysis
 import peaks
 
 # read data
@@ -23,27 +24,9 @@ script_dir = os.path.dirname(__file__)
 # creates PATH to new directory and saves it as "output_dir"
 output_dir = os.path.join(script_dir, "figures/")
 
-if not os.path.isdir(output_dir):  # doesnt if there already is one.
+# doesnt if there already is one.
+if not os.path.isdir(output_dir):
     os.makedirs(output_dir)
 
-
-for i, file in enumerate(os.listdir(PATH)):
-    if file.endswith(".txt"):
-        print("fetching data for %s..." % file)
-
-        if i == 1:
-            filename = []
-            data = np.zeros(
-                [
-                    len(np.loadtxt(PATH + file, skiprows=44, usecols=(0,))),
-                    len(os.listdir(PATH)) + 1,
-                ]
-            )
-            data[:, i] = np.loadtxt(PATH + file, skiprows=44, usecols=(0,))
-            data[:, i + 1] = np.loadtxt(PATH + file, skiprows=44, usecols=(2,))
-
-        data[:, i + 1] = np.loadtxt(PATH + file, skiprows=44, usecols=(2,))
-        filename.append(file[: len(file) - 4])
-
-
-print(data.shape, filename.shape)
+data = HPAEC_analysis.load_data(PATH, 44)
+print(data)
