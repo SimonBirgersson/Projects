@@ -4,11 +4,13 @@
 import os
 from datetime import date
 
-import HPAEC_analysis
 import matplotlib.pyplot as plt
-import numpy as np
+
+"""import numpy as np
 import pandas as pd
-import seaborn as sns
+import seaborn as sns"""
+
+import HPAEC_analysis
 
 # finds absolute PATH of working directory and saves it as "script_dir"
 script_dir = os.path.dirname(__file__)
@@ -21,7 +23,7 @@ if not os.path.isdir(output_dir):
     os.makedirs(output_dir)
 
 # read data
-PATH = "C:/Users/User/Downloads/OneDrive_2022-02-06/Simon-lovisa run 27.03.21/"
+PATH = "/Users/simon/OneDrive - Lund University/HPAEC figure making package/Simon-lovisa run 27.03.21/"
 
 # Figures - enter files to plot
 chromatograms = [
@@ -53,7 +55,7 @@ HPAEC_analysis.plot_chromatograms(
 
 # saves the figure
 plt.savefig(
-    "C:/Users/User/Desktop/Projects/Data Analysis Scripts/figures/"
+    "/Users/simon/Documents/Projects/Data Analysis Scripts/figures/"
     + "TpMan5A "
     + str(date.today())
     + ".png",
