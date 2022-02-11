@@ -2,7 +2,7 @@
 # Great alternative to python lists, allows for matrix operations.
 
 # Create 2 new lists height and weight
-height = [1.87,  1.87, 1.82, 1.91, 1.90, 1.85]
+height = [1.87, 1.87, 1.82, 1.91, 1.90, 1.85]
 weight = [81.65, 97.52, 95.25, 92.98, 86.18, 88.45]
 
 # Import the numpy package as np
@@ -15,7 +15,7 @@ np_weight = np.array(weight)
 print(type(np_height))
 
 # use numpy to calculate BMI
-bmi = np_weight / np_height ** 2
+bmi = np_weight / np_height**2
 print(bmi)
 
 # Allows subsetting of matrices as well. For a boolean response:

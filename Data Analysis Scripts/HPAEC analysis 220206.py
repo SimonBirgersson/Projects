@@ -6,10 +6,6 @@ from datetime import date
 
 import matplotlib.pyplot as plt
 
-"""import numpy as np
-import pandas as pd
-import seaborn as sns"""
-
 import HPAEC_analysis
 
 # finds absolute PATH of working directory and saves it as "script_dir"
