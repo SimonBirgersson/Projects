@@ -46,7 +46,7 @@ chromatograms = [
 plots = ["TpMan5A + M5", " Controls", "Standard series"]
 
 HPAEC_analysis.plot_chromatograms(
-    HPAEC_analysis.load_data(PATH, 44), plots, chromatograms
+    HPAEC_analysis.load_hpaec_data(PATH, 44, ".txt"), plots, chromatograms
 )
 
 # saves the figure
