@@ -142,7 +142,7 @@ def plot_hplc_chromatograms(data, filename, plots, chromatograms):
             ax = f.add_subplot(gs[ind, 0])
 
             # second for-loop iterates over ind:th list ofchromatograms and plots them in the current subplot
-            for column in chromatograms[ind][:]:
+            for i, column in enumerate(chromatograms[ind][:]):
                 try:
                     data[filename.index(column)].plot(
                         kind="line",
