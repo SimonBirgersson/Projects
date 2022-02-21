@@ -24,23 +24,22 @@ PATH = "/Users/simon/OneDrive - Lund University/Synergy project/40ml incubation 
 
 # Enter titles of plots
 plots = [
-    "TrMan5A + Aga27A + allyl alcohol",
-    "Resuspended pellet from ACN dilution",
-    "Standard series of allyl-alpha-mannose",
+    "TrMan5A + Aga27A + allyl alcohol (CAD)",
+    "Standard series of allyl-alpha-mannose (CAD)",
 ]
 
 # Figures - enter files to plot
 chromatograms = [
     [
-        "New LBG Iso 1CAD_1",
+        "New LBG 1CAD_1",
     ],
     [
-        "Resuspended Pellet Iso 1CAD_1",
-    ],
-    [
-        "3 mM iso 1CAD_1",
-        "5 mM iso 1CAD_1",
-        "10 mM Iso 1CAD_1",
+        "0,5 mM 1CAD_1",
+        "1 mM 1CAD_1",
+        "3 mM 1CAD_1",
+        "4 mM 1CAD_1",
+        "5 mM 1CAD_1",
+        "10 mM 1CAD_1",
     ],
 ]
 

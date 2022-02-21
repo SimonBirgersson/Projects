@@ -99,7 +99,7 @@ def load_hplc_data(path, skip_rows, filetype):
 def plot_hpaec_chromatograms(data, plots, chromatograms):
     """plots chromatograms in DataFrame "data" in a vertical plot, with subplots as titled in "plots", containing chromatograms from dataframe columns "chromatograms" """
     # size of plot and subplot dimensions
-    f = plt.figure(figsize=(9, len(plots) * 6))
+    f = plt.figure(figsize=(36, len(plots) * 6))
     gs = f.add_gridspec(len(plots), 1)
 
     # first for-loop iterates over titles of subplots
@@ -131,7 +131,7 @@ def plot_hpaec_chromatograms(data, plots, chromatograms):
 def plot_hplc_chromatograms(data, filename, plots, chromatograms):
     """Plots the data loaded in "load_hplc_data" in subplots denoted in "plots" with chromatogram denoted in "chromatograms" """
     # size of plot and subplot dimensions
-    f = plt.figure(figsize=(6, len(plots) * 6))
+    f = plt.figure(figsize=(6, len(plots) * 4))
     gs = f.add_gridspec(len(plots), 1)
 
     # loop over each subplot in "plots"
@@ -155,7 +155,7 @@ def plot_hplc_chromatograms(data, filename, plots, chromatograms):
                     print(column + " is not in list")
 
         # show data between 1 and 5 minutes
-        plt.xlim([5, 12])
+        plt.xlim([3, 8])
         # plt.xlabel("time [min]")
         plt.legend(loc="best")
         plt.ylabel("Signal [pA]")
