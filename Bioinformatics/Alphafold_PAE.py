@@ -28,7 +28,7 @@ AA_SEQ = "GDAAETTDGALNYASIKLGEDYTDITTTIHVFNQRTDMSEDSYPGKNWEAYIADFNEMYPNITVEVETDT
 
 TICKS = 30
 
-PATH = r"/Users/simon/OneDrive - Lund University/RH_MnBP gene order 210914/Structural analysis/prediction alphafold RhMnBP/predicted_aligned_error.json"
+PATH = r"/Users/simon/OneDrive - Lund University/RH_MnBP gene order 210914/Structural analysis/AlphaFold/prediction alphafold RhMnBP/predicted_aligned_error.json"
 
 
 def PAE_plot(PATH, AA_SEQ, NAME=0, TICKS=30):

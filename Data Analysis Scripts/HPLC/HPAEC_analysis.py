@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+import xlrd
 
 
 def load_hpaec_data(path, skip_rows, filetype):
@@ -66,7 +67,7 @@ def load_hplc_data(path, skip_rows, filetype):
 
         if file.endswith(filetype):
             # print("fetching data from " + file + "...")
-            if filetype == ".xls":
+            if filetype == ".xlsx":
                 try:
                     data.append(
                         pd.read_excel(
@@ -76,32 +77,34 @@ def load_hplc_data(path, skip_rows, filetype):
                             names=["Time(min)", file[4 : len(file) - 4]],
                             skiprows=skip_rows,
                             usecols=(0, 2),
+                            engine="openpyxl",
                         )
                     )
 
                 except pd.errors.EmptyDataError:
                     pass
             # loads time and signal vector for the first injection
-            try:
-                data.append(
-                    pd.read_csv(
-                        path + file,
-                        encoding="unicode_escape",
-                        decimal=",",
-                        header=0,
-                        names=["Time(min)", file[4 : len(file) - 4]],
-                        skiprows=skip_rows,
-                        encoding_errors="ignore",
-                        sep="\t",
-                        usecols=(0, 2),
+            if filetype == ".txt":
+                try:
+                    data.append(
+                        pd.read_csv(
+                            path + file,
+                            encoding="unicode_escape",
+                            decimal=",",
+                            header=0,
+                            names=["Time(min)", file[: len(file) - 4]],
+                            skiprows=skip_rows,
+                            encoding_errors="ignore",
+                            sep="\t",
+                            usecols=(0, 2),
+                        )
                     )
-                )
 
-            except pd.errors.EmptyDataError:
-                pass
+                except pd.errors.EmptyDataError:
+                    pass
 
             # adds the first filename minus file extension to the list "filename"
-            filename.append(file[4 : len(file) - 4])
+            filename.append(file[: len(file) - 4])
 
         # if it isn't a .txt file, do nothing:
         else:
