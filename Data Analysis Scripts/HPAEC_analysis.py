@@ -66,7 +66,21 @@ def load_hplc_data(path, skip_rows, filetype):
 
         if file.endswith(filetype):
             # print("fetching data from " + file + "...")
+            if filetype == ".xls":
+                try:
+                    data.append(
+                        pd.read_excel(
+                            path + file,
+                            decimal=".",
+                            header=0,
+                            names=["Time(min)", file[4 : len(file) - 4]],
+                            skiprows=skip_rows,
+                            usecols=(0, 2),
+                        )
+                    )
 
+                except pd.errors.EmptyDataError:
+                    pass
             # loads time and signal vector for the first injection
             try:
                 data.append(

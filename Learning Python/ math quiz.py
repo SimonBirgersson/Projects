@@ -64,3 +64,4 @@ def quiz(num):
 
     # summarize results
     return f"Your score was {score}/{num}"
+clear
