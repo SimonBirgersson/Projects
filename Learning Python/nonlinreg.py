@@ -16,15 +16,20 @@ v = np.round(120 * s / (171 + s) + np.random.uniform(size=9, low=-20, high=20), 
 
 # function to fit to
 def michaelis_menten(x, vmax=120, km=171):
-    """MM-function.
+    """
+    MM-function.
     INPUT: "substrate" is a list of initial substrate concentrations. "vmax" is the maximum reaction velocity achievable for this system, usually fitted. "km" is the michaelis mentet coefficient, which is the substrate concentration at which 1/2 vmax is reached. Commonly referred to as affinity, which isn't entirely true.
 
-    OUTPUT: the function returns the initial reaction velocity in the units corresponding to the units entered."""
+    OUTPUT: the function returns the initial reaction velocity in the units corresponding to the units entered.
+    """
     return vmax * x / (km + x)
 
 
 def nonlinreg(func, x, y):
-    """Function that fits coefficient in given function "func" using independent variable "x" and response variable "y". "func": needs to be a function with optional coefficients as input, will use default values as initial guesses, as well as depdendent variable needs to be called "x"."""
+    """
+    Function that fits coefficient in given function "func" using independent variable "x" and response variable "y". "func": needs to be a function with optional coefficients as input, will use default values as initial guesses, as well as depdendent variable needs to be called "x".
+    """
+
     # generate model class
     mdl = Model(func)
 

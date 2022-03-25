@@ -1,7 +1,6 @@
 # MALDI-ToF BpMan5A LBG 220214
 import os
 from datetime import date
-from operator import index
 
 import matplotlib.pyplot as plt
 import numpy as np

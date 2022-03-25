@@ -2,9 +2,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-# Peak identification function - (220121), input is vector of y values and minimum value for peak, returns indices of each peak
 def peak_id(signal, threshold):
+    """
+    Peak identification function - (220121)
 
+     input is vector of y values and minimum value for peak, returns indices of each peak
+    """
     peaks = []  # x positions of the peaks, or rather, their index
     for i in range(
         len(signal) - 1
@@ -18,8 +21,12 @@ def peak_id(signal, threshold):
     return peaks
 
 
-# centroid identification function - (220121), input is x and y vector, and indices for peaks from "peak_id" function. returns x values of mass centered centroids.
 def centroid(x, signal, peaks):
+    """
+    centroid identification function - (220121)
+
+     input is x and y vector, and indices for peaks from "peak_id" function. returns x values of mass centered centroids
+    """
     centroids = []  # Values for all the centroids
     for i in peaks:
         # Calculate how far backward and forward to go:
@@ -35,14 +42,17 @@ def centroid(x, signal, peaks):
     return centroids
 
 
-# Just plots vertical lines, in blue dashes
 def plot_vert(x):
-
+    """
+    Just plots vertical lines, in blue dashes
+    """
     plt.axvline(x, color="blue", ls="-.")
 
 
-# plots centroid data
 def plot_centroids(centroids, signal, peaks):
+    """
+    plots centroid data
+    """
     for index, i in enumerate(peaks):
         plt.vlines(
             centroids[index],
@@ -55,6 +65,9 @@ def plot_centroids(centroids, signal, peaks):
 
 
 def plot_mz_text(mz, signal, threshold, xmin, xmax):
+    """
+    plot mz data
+    """
     for index, i in enumerate(peak_id(signal, threshold)):
         centr = centroid(mz, signal, peak_id(signal, threshold))
         if mz[i] < xmax and mz[i] > xmin:
