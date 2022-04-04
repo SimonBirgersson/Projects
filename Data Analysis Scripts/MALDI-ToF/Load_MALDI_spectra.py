@@ -9,14 +9,19 @@ PATH = "/Users/simon/OneDrive - Lund University/Synergy paper/click chemistry/da
 df = load_ms_csv(PATH)
 
 
-plots = ["sample 2", "AM1 ctrl 1", "DPAP ctrl 1", "metOH ctrl 1"]
+plots = ["sample 2", "AM1 ctrl 1", "DPAP ctrl 1", "3MPA ctrl 1", "metOH ctrl 1"]
+# plots = ["sample 2"]
+
+
 f, axs = plt.subplots(len(plots), 1, figsize=(10, 8), sharex=True, sharey=True)
 for i, plot in enumerate(plots):
 
     mz = df[plot]["mz"]
     signal = df[plot]["signal"]
 
-    ax = f.add_subplot(axs[i])
+    if len(plots) > 1:
+        ax = f.add_subplot(axs[i])
+
     for line in [243.08, 279.0997, 347.9897]:
         plot_vert(line)
 

@@ -6,11 +6,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
-import xlrd
 
 
 def load_hpaec_data(path, skip_rows, filetype):
-    """function that checks directory indicated in path for files with filetype as indicated by "filetype" (most usually ".txt"), the grabs first and third column of data, after skip_rows, and stores it in DataFrame with column headers as the filename"""
+    """
+    function that checks directory indicated in path for files with filetype as indicated by "filetype" (most usually ".txt"), the grabs first and third column of data, after skip_rows, and stores it in DataFrame with column headers as the filename
+    """
 
     # for loop that stores time vector as first column, then the signal vectors as each following vector
     # sorts files in directory in descending order after last character in filename, i.e .txt files first, then .xls files
@@ -59,7 +60,9 @@ def load_hpaec_data(path, skip_rows, filetype):
 
 
 def load_hplc_data(path, skip_rows, filetype):
-    """function that checks directory indicated in path for files with filetype as indicated by "filetype" (most usually ".txt"), the grabs first and third column of data, after skip_rows, and stores it in DataFrame with column headers as the filename. Difference from "load_HPAEC_data" is that it loads comma decimaled and tab delimited data."""
+    """
+    function that checks directory indicated in path for files with filetype as indicated by "filetype" (most usually ".txt"), the grabs first and third column of data, after skip_rows, and stores it in DataFrame with column headers as the filename. Difference from "load_HPAEC_data" is that it loads comma decimaled and tab delimited data.
+    """
     data, filename = [], []
     # For-loop for collecting dataframes of each injection in a list
     for i, file in enumerate(fnmatch.filter(os.listdir(path), "*" + filetype)):
@@ -114,7 +117,9 @@ def load_hplc_data(path, skip_rows, filetype):
 
 
 def plot_hpaec_chromatograms(data, plots, chromatograms):
-    """plots chromatograms in DataFrame "data" in a vertical plot, with subplots as titled in "plots", containing chromatograms from dataframe columns "chromatograms" """
+    """
+    plots chromatograms in DataFrame "data" in a vertical plot, with subplots as titled in "plots", containing chromatograms from dataframe columns "chromatograms"
+    """
     # size of plot and subplot dimensions
     f = plt.figure(figsize=(36, len(plots) * 6))
     gs = f.add_gridspec(len(plots), 1)
@@ -146,7 +151,9 @@ def plot_hpaec_chromatograms(data, plots, chromatograms):
 
 
 def plot_hplc_chromatograms(data, filename, plots, chromatograms):
-    """Plots the data loaded in "load_hplc_data" in subplots denoted in "plots" with chromatogram denoted in "chromatograms" """
+    """
+    Plots the data loaded in "load_hplc_data" in subplots denoted in "plots" with chromatogram denoted in "chromatograms"
+    """
     # size of plot and subplot dimensions
     f = plt.figure(figsize=(6, len(plots) * 4))
     gs = f.add_gridspec(len(plots), 1)

@@ -12,9 +12,9 @@ def timer(func):
     # define wrapper function to use for other functions
     def wrapper(*args, **kwargs):
 
-        t1 = time.time()
+        t1 = time.perf_counter()
         result = func(*args, **kwargs)
-        t2 = time.time()
+        t2 = time.perf_counter()
 
         print(f"function {func.__name__!r} finished after {t2-t1:.2f}s. \n")
         return result
