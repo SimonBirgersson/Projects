@@ -1,0 +1,74 @@
+from datetime import date
+
+import matplotlib.pyplot as plt
+from utils.maldi_tof import load_ms_csv
+from utils.peaks import plot_vert
+
+PATH = "/Users/simon/Library/CloudStorage/OneDrive-LundUniversity/Synergy paper/click chemistry/data/MALDI ToF/AM1 C6SH metOH click chem 220411/Text files/"
+
+df = load_ms_csv(PATH)
+
+"""
+plots = [
+    "cal2",
+    "AM1 ctrl 2",
+    "DPAP ctrl 2",
+    "C6SH ctrl 2",
+    "metOH ctrl 1",
+    "metOH ctrl 2",
+]
+"""
+
+"""
+plots = [
+    "reaction 0h 2",
+    "reaction 0.5h 2",
+    "reaction 1.0h 1",
+    "reaction 2.0h 1",
+    "reaction 4.0h 1",
+    "AM1 ctrl 2",
+    "DPAP ctrl 2",
+]
+"""
+spectra = [
+    "reaction 0h 1",
+    "reaction 0.5h 1",
+    "reaction 1.0h 2",
+    "reaction 2.0h 2",
+    "reaction 4.0h 2",
+    "AM1 ctrl 2",
+    "DPAP ctrl 2",
+]
+
+
+def plot_ms(plots, check=None):
+    """
+    Hej
+    """
+    f, axs = plt.subplots(len(plots), 1, figsize=(10, 8), sharex=True, sharey=True)
+    for i, plot in enumerate(plots):
+
+        mz = df[plot]["mz"]
+        signal = df[plot]["signal"]
+
+        if len(plots) > 1:
+            ax = f.add_subplot(axs[i])
+
+        if check:
+            for line in check:
+                plot_vert(line)
+
+        plt.plot(mz, signal, "-", color="black", linewidth=1)
+        plt.xlabel("m/z")
+        plt.ylabel("Signal")
+        plt.xlim([200, 400])
+        # plt.xlim([300, 370])
+        plt.ylim([0, max(signal) * 1.05])
+        plt.grid()
+        plt.legend({plot}, loc="best")
+
+    plt.suptitle("Mass Spectrum - %s" % date.today())
+    plt.show()
+
+
+plot_ms(spectra, [243.08, 279.0997, 360.1583])

@@ -40,12 +40,15 @@ def show_hand(cards: list[Card], return_string=True, number_of_cards: int = None
 
     # create an empty list of list, each sublist is a line
     lines = [[] for i in range(9)]
-
+    hide_cards = False
     if number_of_cards:
-
-        cards = cards[:number_of_cards]
+        hide_cards = True
 
     for index, card in enumerate(cards):
+        if hide_cards and index < number_of_cards:
+            card.rank = " "
+            card.suit = " "
+
         # "King" should be "K" and "10" should still be "10"
         if card.rank == "10":  # ten is the only one who's rank is 2 char long
             space = ""  # if we write "10" on the card that line will be 1 char to long
@@ -174,29 +177,30 @@ class Deck(object):
 class Hand(object):
     """group or cards from hand"""
 
-    def __init__(
-        self,
-        deck: Deck,
-        size: int = 2,
-    ) -> None:
+    def __init__(self, deck: Deck, size: int = 2, cards: list[Card] = None) -> None:
 
-        self.cards: list[Card] = deck.draw(size)
+        if cards:
+            self.cards = cards
+        elif not cards:
+            self.cards: list[Card] = deck.draw(size)
+
         self.deck: Deck = deck
         self.value = sum([self.cards[i].value for i in range(len(self.cards))])
 
-    def draw(self, amount: int):
-        """
-        Draw amount of cards from the deck and add it to your hand.
-        """
-
-        # check if there is enough cards to draw
-        if amount > len(self.deck):
-            return print("Not enough cards to draw left in the deck!")
-
-        self.cards = self.cards + self.deck.draw(amount)
-
     def __repr__(self) -> str:
         return show_hand(self.cards)
+
+
+def draw(hand: Hand, deck: Deck, amount: int):
+    """
+    Draw amount of cards from the deck and add it to your hand.
+    """
+
+    # check if there is enough cards to draw
+    if amount > len(deck):
+        return print("Not enough cards to draw left in the deck!")
+
+    return Hand(deck=deck, cards=hand.cards + deck.draw(amount))
 
 
 def main():
@@ -206,8 +210,8 @@ def main():
     deck = Deck()  # create deck
     print(len(deck))
 
-    hand = Hand(deck=deck)  # create hand of 2 from deck
-    print(show_hand(hand.cards))
+    hand = Hand(deck=deck, size=3)  # create hand of 2 from deck
+    print(show_hand(hand.cards, number_of_cards=1))
     print(len(deck))
     print(hand.value)
 

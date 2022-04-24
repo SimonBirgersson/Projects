@@ -45,12 +45,12 @@ chromatograms = [
 # Enter titles of plots
 plots = ["TpMan5A + M5", " Controls", "Standard series"]
 
-HPAEC_analysis.plot_chromatograms(
+HPAEC_analysis.plot_hpaec_chromatograms(
     HPAEC_analysis.load_hpaec_data(PATH, 44, ".txt"), plots, chromatograms
 )
-
+plt.show()
 # saves the figure
-plt.savefig(
+"""plt.savefig(
     "/Users/simon/Documents/Projects/Data Analysis Scripts/figures/"
     + "TpMan5A "
     + str(date.today())
@@ -58,3 +58,4 @@ plt.savefig(
     dpi=800,
     bbox_inches="tight",
 )
+"""
