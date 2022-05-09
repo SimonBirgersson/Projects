@@ -1,0 +1,22 @@
+GUEST BOOK:
+------------
+house   True    2022-04-25
+
+you   False    2022-04-25
+
+house   True    2022-04-25
+
+house   True    2022-04-25
+
+house   True    2022-04-25
+
+house   True    2022-04-25
+
+house   True    2022-04-25
+
+player   False    2022-04-25
+
+house   False    2022-04-25
+
+you   False    2022-04-25
+

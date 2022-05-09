@@ -1,3 +1,5 @@
+from datetime import date
+
 from Learning_Python.casino.french_deck import Card, Deck, Hand, show_hand
 
 
@@ -180,6 +182,12 @@ class CLI:
                 break
             print("Not an appropriate choice.")
         return option[int(choice)]
+
+    def guest_book_entry(self, win: tuple([str, bool])) -> str:
+        """
+        the line that gets entered into the guest book.
+        """
+        return f"{win[0]}   {win[1]}    {date.today()}\n\n"
 
 
 def main():

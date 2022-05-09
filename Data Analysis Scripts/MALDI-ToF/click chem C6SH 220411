@@ -30,11 +30,18 @@ plots = [
     "DPAP ctrl 2",
 ]
 """
+"""
 spectra = [
     "reaction 0h 1",
     "reaction 0.5h 1",
     "reaction 1.0h 2",
     "reaction 2.0h 2",
+    "reaction 4.0h 2",
+    "AM1 ctrl 2",
+    "DPAP ctrl 2",
+]
+"""
+spectra = [
     "reaction 4.0h 2",
     "AM1 ctrl 2",
     "DPAP ctrl 2",

@@ -8,13 +8,19 @@ from scipy.stats import linregress as linreg
 
 
 def estimate(abs, slope, intercept):
-    """calculates the concentration from absorbance using slope and intercept from standard data, corrects for dilution factor as well."""
+    """
+    calculates the concentration from absorbance using slope and intercept from standard data, corrects for dilution factor as well.
+
+    y   = x * slope + intercept -> x = (y - intercept) / slope
+
+    abs = c * slope + intercept -> c = (abs - intercept) / slope
+    """
     return (abs - intercept) / slope
 
 
 class Absorbance:
     """
-    Parent class that allows numpy arrays or absorbance data
+    Parent class that allows numpy arrays of absorbance data with absorbance mean and std
     """
 
     def __init__(
@@ -38,7 +44,20 @@ class Absorbance:
 
 class Standard(Absorbance):
     """
-    Class for std data. Provides method for fitting, plotting and showing data.
+    child Class for std data. Provides method for fitting, plotting and showing data.
+
+    INPUT:
+    absorbance: numpy array of your absorbance data, default is experiments in rows, replicates in col.
+    concentration: numpy array of your known std concentration
+    x_unit: str of the unit of concentration
+    y_unit: str of unit for signal, default is absorbance.
+    shape: modifies the order of experiments and replicates.
+
+    self.fit is a regression object (see scipy -> linreg for further details)
+
+    OUTPUT:
+    printing the class shows matrix of data
+    "plot()" function creates a pyplot object of the data
     """
 
     def __init__(
@@ -56,20 +75,16 @@ class Standard(Absorbance):
         self.x_unit = x_unit
         self.y_unit = y_unit
 
-    def show(self):
-        """
-        shows the data in a pandas table
-        """
-        print("Standard Data:")
-        print(
-            pd.DataFrame(
-                {
-                    self.x_unit: self.c,
-                    f"mean [{self.y_unit}]": self.mean,
-                    f"+/- [{self.y_unit}]": self.std,
-                }
-            )
+    def __repr__(self):
+        df = pd.DataFrame(
+            {
+                self.x_unit: self.c,
+                f"mean [{self.y_unit}]": self.mean,
+                f"+/- [{self.y_unit}]": self.std,
+            }
         )
+
+        return f"Standard Data: \n {df}"
 
     def plot(self):
         """
@@ -101,7 +116,22 @@ class Standard(Absorbance):
 
 class Enzyme(Absorbance):
     """
-    Class for sample data
+    child Class for sample data, allows for calculation of concentration and activity based on std data.
+
+    INPUT:
+    absorbance: numpy array of your absorbance data, default is experiments in rows, replicates in col.
+    Name: str of experiment name
+    dilution_factor: numpy array of the dilution factors of each experiment.
+    x_unit: str of the unit of concentration
+    y_unit: str of unit for signal, default is absorbance.
+    shape: modifies the order of experiments and replicates.
+
+    concentration: numpy array of estimated concentrations.
+
+    OUTPUT:
+    printing the class shows matrix of data
+    "plot()" function creates a pyplot object of the data
+
     """
 
     def __init__(
@@ -165,25 +195,32 @@ def main():
     """
     executable part of script.
     """
+
+    # initilazing class of example data
     std = Standard(
         absorbance=(np.array([1, 4, 6, 8, 10, 15, 20, 25]) + np.random.rand(3, 8)) * 4
         + 6,
         concentration=np.array([1, 4, 6, 8, 10, 15, 20, 25]),
         x_unit="mM",
-        shape="columns",
+        y_unit="AU",
     )
 
+    # initilazing class of example data
     TrMan5A = Enzyme(
-        Name="10x Dil, 1h",
+        Name=" TrMan5A 10x Dil, 1h",
         absorbance=[15, 12, 16] + np.random.rand(3, 1) * 4 + 3,
         regr=std.fit,
         dilution_factor=10,
         x_unit=std.x_unit,
         y_unit=std.y_unit,
-        shape="col",
     )
 
+    # shows the data in matrix and graphical forms.
+    print(std)
     print(TrMan5A)
+    TrMan5A.plot()
+    std.plot()
+    plt.show()
 
 
 if __name__ == "__main__":

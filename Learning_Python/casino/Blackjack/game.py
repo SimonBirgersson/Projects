@@ -165,11 +165,27 @@ class Game:
                 return True
 
             elif choice == "guestbook":
-                raise NotImplementedError
+                self.guest_book(win)
+                continue
                 # continue after signing name into .txt file with date and result
             else:
                 print("not a valid option")
                 continue
+
+    def guest_book(
+        self,
+        win: tuple([str, bool]),
+        file="/Users/simon/Documents/Projects/Learning_Python/casino/Blackjack/guest_book.txt",
+    ) -> list[str]:
+        """
+        Lets the user sign the guestbook
+        """
+        with open(file, "a+", encoding="utf-8") as f:
+            f.write(self.ui.guest_book_entry(win))
+            contents = f.readlines
+            f.close()
+
+        return print([line for line in contents])
 
 
 def main():
