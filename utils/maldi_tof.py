@@ -3,6 +3,7 @@ Provides function for loading .csv MALDI Data into dictionary of dataframes with
 """
 import os
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
@@ -25,9 +26,17 @@ def load_ms_csv(path: str):
             )
     return data
 
-    def plot_ms(plots, check=None):
+
+def plot_ms(plots, df: pd.DataFrame, check: list[float] = None):
     """
-    Hej
+    creates a plot of the ms data with each spectrum in subplot.
+
+    input:
+        plots: names of the spectra in df to plot.
+        check (optional: plot vertical lines at m/z provided for control
+
+    output:
+        a plot object.
     """
     f, axs = plt.subplots(len(plots), 1, figsize=(10, 8), sharex=True, sharey=True)
     for i, plot in enumerate(plots):
@@ -52,4 +61,3 @@ def load_ms_csv(path: str):
         plt.legend({plot}, loc="best")
 
     plt.suptitle("Mass Spectrum - %s" % date.today())
-    plt.show()
