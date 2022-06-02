@@ -46,7 +46,7 @@ def plot_vert(x):
     """
     Just plots vertical lines, in blue dashes
     """
-    plt.axvline(x, color="blue", ls="-.")
+    plt.axvline(x, color="black", ls="-.", linewidth=1.0)
 
 
 def plot_centroids(centroids, signal, peaks):

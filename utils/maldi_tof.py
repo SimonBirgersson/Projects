@@ -40,15 +40,15 @@ def load_ms_csv(path: str):
     return data
 
 
-
-
+@timer
 def plot_ms(
     plots: list[list[str]],
     df: dict,
     check: list[float] = None,
     xlim: tuple[float, float] = None,
+    ylim: tuple[float, float] = None,
 ):
- """
+    """
     creates a plot of the ms data with each spectrum in subplot.
 
     input:
@@ -58,8 +58,8 @@ def plot_ms(
     output:
         a plot object.
     """
-    #create plot object
-    f, axs = plt.subplots(len(plots), 1, figsize=(10, 8), sharex=True, sharey=True)
+    # create plot object
+    f, axs = plt.subplots(len(plots), 1, figsize=(15, 8), sharex=True, sharey=True)
 
     # for each list in plots:
     for i, subplot in enumerate(plots):
@@ -76,12 +76,9 @@ def plot_ms(
             signal = df[plot]["signal"]
 
             # if vertical lines, plot them in the subplot
-            if check:
-                for line in check:
-                    plot_vert(line)
-            
+
             # plot the data, add labels
-            plt.plot(mz, signal, "-", color="black", linewidth=1)
+            plt.plot(mz, signal + 10000 * j, "-", linewidth=1)
             plt.xlabel("m/z")
             plt.ylabel("Signal")
 
@@ -89,12 +86,18 @@ def plot_ms(
             if xlim:
                 plt.xlim(xlim)
 
-            # y limits is 0 to 105% of highest signal
-            plt.ylim([0, max(signal) * 1.05])
+            if ylim:
+                plt.ylim(ylim)
+            else:
+                # y limits is 0 to 105% of highest signal
+                plt.ylim([0, max(signal) * 1.05])
 
-            # add grid and put legend at best location.
-            plt.grid()
-            plt.legend({plot}, loc="best")
+        # add grid and put legend at best location.
+        plt.grid()
+        plt.legend(subplot, loc="best")
+        if check:
+            for line in check:
+                plot_vert(line)
 
     # title above the entire plot.
     plt.suptitle("Mass Spectrum - %s" % date.today())

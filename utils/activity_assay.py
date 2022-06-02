@@ -33,8 +33,8 @@ class Absorbance:
 
     def __init__(
         self,
-        absorbance: np.ndarray,
-        shape: str = "columns",
+        absorbance: np.ndarray,  # array of abs values
+        shape: str = "columns",  # orientation of values vs. replicates.
     ) -> None:
         self.abs = absorbance
 
@@ -75,11 +75,11 @@ class Standard(Absorbance):
 
     def __init__(
         self,
-        absorbance: np.ndarray,
-        concentration=np.ndarray,
-        x_unit: str = None,
-        y_unit: str = "AU",
-        shape: str = "columns",
+        absorbance: np.ndarray,  # array of abs values
+        concentration=np.ndarray,  # array of known concentration
+        x_unit: str = None,  # unit of concentrations, i.e [mM]
+        y_unit: str = "AU",  # unit of absorbance
+        shape: str = "columns",  # orientation of data array
     ) -> None:
         super().__init__(absorbance, shape)
 
@@ -103,7 +103,7 @@ class Standard(Absorbance):
         for i, _ in enumerate(self.abs):
             df.insert(i + 1, f"abs #{i+1}", self.abs[i, :])
 
-        return f"Standard Data: \n {df}"
+        return f"Standard Data: \n {df}  \n\nResulting std equation is:\n\n    abs = c * {self.fit.slope:.2f} + {self.fit.intercept:.2f}\n\nWith an R^2 of {self.fit.rvalue**2:.4f}"
 
     def plot(self):
         """
@@ -124,11 +124,12 @@ class Standard(Absorbance):
 
         # regression line
         plt.plot(
-            range(int(self.c[-1])),
-            range(int(self.c[-1])) * self.fit.slope + self.fit.intercept,
+            self.c,
+            self.c * self.fit.slope + self.fit.intercept,
             color="green",
+            linestyle="--",
             linewidth=1,
-            label=f"fit abs = {self.fit.slope:0.2f} * c + {self.fit.intercept:0.2f}",
+            label=f"Fit: abs = {self.fit.slope:0.2f} * c + {self.fit.intercept:0.2f}",
         )
         plt.grid(True)
         plt.xlabel(f"Concentration [{self.x_unit}]")
@@ -165,6 +166,7 @@ class Enzyme(Absorbance):
         regr,
         time: list[float],
         dilution_factor: np.ndarray = 1,
+        enzyme_stock_conc: float = None,
         x_unit: str = None,
         y_unit: str = "AU",
         shape: str = "columns",
@@ -177,6 +179,7 @@ class Enzyme(Absorbance):
         self.x_unit = x_unit
         self.y_unit = y_unit
         self.dil = dilution_factor
+        self.stock_conc = enzyme_stock_conc
         self.time = time
 
         # concentration of analyte in cuvette
@@ -191,31 +194,29 @@ class Enzyme(Absorbance):
         if self.x_unit == "nM":
             # [nM] / 1000_000_000 [M/nM] * 1000_000_000 [nM/M] /1000 [l/ml] / 600 [1/s] = nmol/ml/s = nkat/ml
             self.activity = self.c / 1000 / 600 * self.dil
+            self.activity_std = self.c_std / 1000 / 600 * self.dil
 
-        elif self.x_unit == "μM" or "uM":
+        elif self.x_unit == "μM" or self.x_unit == "uM":
             # [uM] / 1000_000 [M/uM] * 1000_000_000 [nM/M] /1000 [l/ml] / 600 [1/s] = nmol/ml/s = nkat/ml
             self.activity = self.c * 1 / 600 * self.dil
+            self.activity_std = self.c_std * 1 / 600 * self.dil
 
         elif self.x_unit == "mM":
             # [mM] / 1000 [M/mM] * 1000_000_000 [nM/M] /1000 [l/ml] / 600 [1/s] = nmol/ml/s = nkat/ml
             self.activity = self.c * 1_000 / 600 * self.dil
+            self.activity_std = self.c_std * 1_000 / 600 * self.dil
 
         elif self.x_unit == "M":
             # [M] * 1000_000_000 [nM/M] /1000 [l/ml] / 600 [1/s] = nmol/ml/s = nkat/ml
             self.activity = self.c * 1_000_000 / 600 * self.dil
+            self.activity_std = self.c_std * 1_000_000 / 600 * self.dil
 
         else:
             print("Wrong unit for X-values, needs to be [nM],[μM],[mM], or [M]")
             raise NotImplementedError
 
-        # if there are something in each cell of self.activity, calc. the std dev
-        if self.activity.all():
-            self.activity_std = abs(np.std(self.activity, axis=0)) * self.dil
-
-    def __repr__(self):
-
-        # generate dataframe of mean abs, std, calculated concentrations, and std.
-        df = pd.DataFrame(
+        # create dataframe of all data for presentation
+        self.df = pd.DataFrame(
             {
                 f"mean [{self.y_unit}]": self.mean,
                 f"+/- [{self.y_unit}]": self.std,
@@ -223,15 +224,29 @@ class Enzyme(Absorbance):
                 f"+/- [{self.x_unit}]": self.c_std,
                 "activity [nkat/ml]": self.activity,
                 "+/- [nkat/ml]": self.activity_std,
-            }
+            },
+            index=pd.Index([self.name]),
         )
 
-        # insert columns of replicate data into dataframe
+        # calculate specific activity if there is a protein stock conc. entered.
+        if enzyme_stock_conc and self.activity:
+            # requires that the stock conc. if in mg/ml and the activity is in stock nkat/ml.
+            self.specific_activity = self.activity / self.stock_conc
+            self.specific_activity_std = self.activity_std / self.stock_conc
+
+            # adds it to the dataframe
+            self.df["spec. activity [nkat/mg]"] = self.specific_activity
+            self.df["+/- [nkat/mg]"] = self.specific_activity_std
+
+        # insert raw replicate data depending on how many replicates
         for i, _ in enumerate(self.abs):
-            df.insert(i, f"abs #{i+1}", self.abs[i, :])
+            self.df.insert(i, f"abs #{i+1}", self.abs[i, :])
 
-        return f"{self.name}: \n {df}"
+    # if Enzyme class is printed, it returns the dataframe table
+    def __repr__(self):
+        return f"{self.name}: \n {self.df}"
 
+    # function for plotting the data points.
     def plot(self) -> None:
         """
         Create the plot object of the sample data.
