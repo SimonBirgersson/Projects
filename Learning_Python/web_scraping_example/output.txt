@@ -1,0 +1,14 @@
+Currently: Mostly Sunny: 82F
+Currently in Charleston, WV: 82 °F and Mostly Sunny
+				<img src="https://vortex.accuweather.com/phoenix2/images/common/icons/02_31x31.gif">
+				
+
+6/5/2022 Forecast
+High: 85 F Low: 60 F Mostly sunny <img src="https://vortex.accuweather.com/phoenix2/images/common/icons/02_31x31.gif" >
+
+6/6/2022 Forecast
+High: 86 F Low: 63 F Periods of clouds and sun <img src="https://vortex.accuweather.com/phoenix2/images/common/icons/04_31x31.gif" >
+
+The AccuWeather.com RSS Center
+To discover additional weather feeds, visit the AccuWeather.com RSS Center at https://corporate.accuweather.com/resources/downloads
+

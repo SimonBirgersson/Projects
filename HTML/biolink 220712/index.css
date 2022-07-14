@@ -1,0 +1,91 @@
+/* change style of list */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-size: 20px;
+}
+
+body {
+    background: url(./images/bg01.jpg) no-repeat fixed;
+    background-size: cover;
+}
+
+/* change header fig and text alignment*/
+header {
+    margin-top: 1em;
+
+    /* center and align header*/
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* change header image style*/
+header>img {
+    width: 10em;
+    height: 10em;
+    object-fit: cover;
+    /* crop rather than squeeze*/
+    border-radius: 100px;
+    /* make the image round */
+    border: 1px solid #fff;
+    /* add white border*/
+    box-shadow: rgb(28 32 93 /24%) 0px 2px 8px;
+    /* black drop shadow*/
+
+}
+
+/* change header text style */
+header>h1 {
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: bold;
+    border-radius: 1em;
+    background-color: #000a;
+    color: #fff;
+    padding: 0.3em 0.6em;
+    border: 1px solid #fffa;
+    backdrop-filter: blur(10px) saturate(200%) contrast(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(200%) contrast(180%);
+}
+
+/* list entry boxes */
+ul {
+    box-sizing: border-box;
+    list-style: none;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+/* list entry boxes */
+ul>li {
+    background-color: #000a;
+    backdrop-filter: blur(10px) saturate(200%) contrast(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(200%) contrast(180%);
+    border-radius: 10em;
+    padding: 1em;
+    margin: 1.4em 0;
+    box-shadow: rgb(28 32 93 /24%) 0px 2px 8px;
+    /* black drop shadow*/
+}
+
+/* list entry boxes text */
+ul>li>a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+}
+
+/* list entry boxes text */
+a {
+    color: white;
+    text-decoration: none;
+}

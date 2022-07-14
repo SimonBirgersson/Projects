@@ -50,6 +50,7 @@ class Absorbance:
             print("please enter either 'columns' or 'rows' for the shape.")
 
 
+# Class for standard data storage and calc
 class Standard(Absorbance):
     """
     child Class for std data. Provides method for fitting, plotting and showing data.
@@ -88,10 +89,8 @@ class Standard(Absorbance):
         self.x_unit = x_unit
         self.y_unit = y_unit
 
-    def __repr__(self):
-
         # generate a dataframe of mean abs and std for abs
-        df = pd.DataFrame(
+        self.df = pd.DataFrame(
             {
                 self.x_unit: self.c,
                 f"mean [{self.y_unit}]": self.mean,
@@ -101,9 +100,11 @@ class Standard(Absorbance):
 
         # insert columns of replicate data into dataframe
         for i, _ in enumerate(self.abs):
-            df.insert(i + 1, f"abs #{i+1}", self.abs[i, :])
+            self.df.insert(i + 1, f"abs #{i+1}", self.abs[i, :])
 
-        return f"Standard Data: \n {df}  \n\nResulting std equation is:\n\n    abs = c * {self.fit.slope:.2f} + {self.fit.intercept:.2f}\n\nWith an R^2 of {self.fit.rvalue**2:.4f}"
+    def __repr__(self):
+
+        return f"Standard Data: \n {self.df}  \n\nResulting std equation is:\n\n    abs = c * {self.fit.slope:.2f} + {self.fit.intercept:.2f}\n\nWith an R^2 of {self.fit.rvalue**2:.4f}"
 
     def plot(self):
         """
@@ -138,6 +139,7 @@ class Standard(Absorbance):
         plt.title(f"Standard Curve - {str(date.today())}")
 
 
+# Class for sample data storage and calc
 class Enzyme(Absorbance):
     """
     child Class for sample data, allows for calculation of concentration and activity based on std data.
@@ -179,7 +181,6 @@ class Enzyme(Absorbance):
         self.x_unit = x_unit
         self.y_unit = y_unit
         self.dil = dilution_factor
-        self.stock_conc = enzyme_stock_conc
         self.time = time
 
         # concentration of analyte in cuvette
@@ -190,53 +191,65 @@ class Enzyme(Absorbance):
             estimate(abs=self.std, slope=self.regr.slope, intercept=self.regr.intercept)
         )
 
-        # calculate activity in nkat/ml based on unit in "x_unit"
-        if self.x_unit == "nM":
-            # [nM] / 1000_000_000 [M/nM] * 1000_000_000 [nM/M] /1000 [l/ml] / 600 [1/s] = nmol/ml/s = nkat/ml
-            self.activity = self.c / 1000 / 600 * self.dil
-            self.activity_std = self.c_std / 1000 / 600 * self.dil
+        # concentration factor concentration unit -> nM
+        c_conversion_factor = {
+            "nM": 1,  # nM/nM = 1
+            "μM": 1000,  # nM/uM = 1000
+            "uM": 1000,  # nM/uM = 1000
+            "mM": 1000_000,  # nM/mM = 1000_000
+            "M": 1000_000_000,  # nM/M = 1000_000_000
+        }
 
-        elif self.x_unit == "μM" or self.x_unit == "uM":
-            # [uM] / 1000_000 [M/uM] * 1000_000_000 [nM/M] /1000 [l/ml] / 600 [1/s] = nmol/ml/s = nkat/ml
-            self.activity = self.c * 1 / 600 * self.dil
-            self.activity_std = self.c_std * 1 / 600 * self.dil
+        try:
+            self.activity = (
+                self.c  # calculated concentration from std curve
+                * c_conversion_factor[
+                    self.x_unit
+                ]  # unit conversion factor depending concentration prefix
+                / 1000  # L/ml = 10^-3
+                / (self.time * 60)  # enzyme reaction time in minutes  # s/min
+                * self.dil  # account for reaction dilution factor
+            )
+            print(len(self.activity))
 
-        elif self.x_unit == "mM":
-            # [mM] / 1000 [M/mM] * 1000_000_000 [nM/M] /1000 [l/ml] / 600 [1/s] = nmol/ml/s = nkat/ml
-            self.activity = self.c * 1_000 / 600 * self.dil
-            self.activity_std = self.c_std * 1_000 / 600 * self.dil
+            self.activity_std = (
+                self.c_std  # calculated concentration from std curve
+                * c_conversion_factor[
+                    self.x_unit
+                ]  # unit conversion factor depending concentration prefix
+                / 1000  # L/ml = 10^-3
+                / (self.time * 60)  # enzyme reaction time in minutes  # s/min
+                * self.dil  # account for reaction dilution factor
+            )
 
-        elif self.x_unit == "M":
-            # [M] * 1000_000_000 [nM/M] /1000 [l/ml] / 600 [1/s] = nmol/ml/s = nkat/ml
-            self.activity = self.c * 1_000_000 / 600 * self.dil
-            self.activity_std = self.c_std * 1_000_000 / 600 * self.dil
-
-        else:
+        except:
             print("Wrong unit for X-values, needs to be [nM],[μM],[mM], or [M]")
-            raise NotImplementedError
 
         # create dataframe of all data for presentation
         self.df = pd.DataFrame(
             {
-                f"mean [{self.y_unit}]": self.mean,
-                f"+/- [{self.y_unit}]": self.std,
-                f"conc. analyte [{self.x_unit}]": self.c,
-                f"+/- [{self.x_unit}]": self.c_std,
-                "activity [nkat/ml]": self.activity,
-                "+/- [nkat/ml]": self.activity_std,
+                f"mean [{self.y_unit}]": self.mean,  # mean absorbance
+                f"+/- [{self.y_unit}]": self.std,  # std absorbance
+                f"conc. analyte [{self.x_unit}]": self.c,  # calc. conc.
+                f"+/- [{self.x_unit}]": self.c_std,  # std conc.
+                "conc [nM]": self.c * c_conversion_factor[self.x_unit],  # conc in nM
+                "+/- [nM]": self.c_std
+                * c_conversion_factor[self.x_unit],  # std conc in nM
+                "conc [nmol/ml]": self.c * c_conversion_factor[self.x_unit] / 1000,
+                "+/- [nmol/ml]": self.c_std * c_conversion_factor[self.x_unit] / 1000,
+                "activity in assay [nkat/ml]": self.c
+                * c_conversion_factor[self.x_unit]
+                / 1000
+                / (self.time * 60),
+                "+/- in assay [nkat/ml]": self.c_std
+                * c_conversion_factor[self.x_unit]
+                / 1000
+                / (self.time * 60),
+                "activity [nkat/ml]": self.activity,  # calc. activity
+                "+/- [nkat/ml]": self.activity_std,  # std activity
             },
-            index=pd.Index([self.name]),
+            index=pd.Index([self.name]),  # index is experiment name
         )
-
-        # calculate specific activity if there is a protein stock conc. entered.
-        if enzyme_stock_conc and self.activity:
-            # requires that the stock conc. if in mg/ml and the activity is in stock nkat/ml.
-            self.specific_activity = self.activity / self.stock_conc
-            self.specific_activity_std = self.activity_std / self.stock_conc
-
-            # adds it to the dataframe
-            self.df["spec. activity [nkat/mg]"] = self.specific_activity
-            self.df["+/- [nkat/mg]"] = self.specific_activity_std
 
         # insert raw replicate data depending on how many replicates
         for i, _ in enumerate(self.abs):
@@ -254,19 +267,103 @@ class Enzyme(Absorbance):
 
         # data points for sample.
         plt.errorbar(
-            self.c,
-            self.mean,
-            self.std,
-            fmt="*",
-            linewidth=1,
-            capsize=3,
-            label=self.name,
+            self.c,  # x-values is concentration
+            self.mean,  # y-value is mean abs
+            self.std,  # errorbar i std abs
+            fmt="*",  # dots
+            linewidth=1,  # linewidth of the errorbar
+            capsize=3,  # size of the "T" on the errorbars
+            label=self.name,  # add legend
         )
         plt.grid(True)
         plt.xlabel(f"concentration [{self.x_unit}]")
         plt.ylabel(f"Absorbance [{self.y_unit}]")
         plt.title(f"Standard Curve - {str(date.today())}")
         plt.legend()
+
+
+"""
+def compile_experiments(
+    experiments: list[Enzyme], enzyme_stock_conc: float = None, enzyme_mw: float = None
+):
+    ""get a table of all experiments for export, calc. specific activity""
+
+    # generate empty dataframe
+    df = pd.DataFrame([])
+
+    # enter each experiment data into dataframe
+    for experiment in experiments:
+        df[experiment.name] = experiment.T
+
+    # calculate specific activity if there is a protein stock conc. entered.
+    if enzyme_stock_conc:
+        # requires that the stock conc. if in mg/ml and the activity is in stock nkat/ml.
+        df.loc["spec. activity [nkat/mg]"] = (
+            df.loc["activity [nkat/ml]"] / enzyme_stock_conc
+        )
+        df.loc["+/- [nkat/mg]"] = df.loc["+/- [nkat/ml]"] / enzyme_stock_conc
+
+        # U/mg = umol/min/mg -> nmol/s/mg * 10^3 * 60 s/min = umol/min/mg
+        df.loc["spec. activity [unit/mg]"] = (
+            df.loc["spec. activity [nkat/mg]"] * 10**-3 * 60
+        )
+        df.loc["+/- [unit/mg]"] = df.loc["+/- [nkat/mg]"] * 10**-3 * 60
+
+        # if enzyme molecular weight is addded, calc. spec activity
+        if enzyme_mw:
+            # kat/mol -> nmol/s/mg * 10^-9 [M/nM] * 10^3 [mg/g] * [g/mol] = kat/mol
+            df.loc["spec. activity [kat/mol]"] = (
+                df.loc["spec. activity [nkat/mg]"] * 10**-6 * enzyme_mw
+            )
+            df.loc["+/- [kat/mol]"] = df.loc["+/- [nkat/mg]"] * 10**-6 * enzyme_mw
+
+    return df
+"""
+
+
+def generate_excel_report(
+    exp_dfs: list[pd.DataFrame],
+    std_dfs: list[pd.DataFrame],
+    path: str,
+    filename: str,
+    notes: list[str] = None,
+):
+    """Print thoroughly made excel report with line of text describing each math operation."""
+
+    notes_df = pd.DataFrame({"notes": notes})
+
+    exp_dfs.append(notes_df.T)
+
+    with pd.ExcelWriter(
+        f"{path}{filename}.xlsx",
+        engine="xlsxwriter",
+    ) as writer:  # pylint: disable=abstract-class-instantiated
+
+        # write all experiment data in sheet 1 with notes
+        start_col = 0  # start to the leftmost side in the sheet
+        for i, exp in enumerate(exp_dfs):  # assuming they're already DataFrames
+
+            # only included indices (units) for first df
+            if i == 0:
+                ind = True
+            else:
+                ind = False
+
+            # write df to excel
+            exp.T.to_excel(
+                writer, "sample raw data & calculation", startcol=start_col, index=ind
+            )
+
+            # where to place the next one
+            if i == 0:
+                start_col += len(exp.T.columns) + 1  # add a col for the column header?
+            else:
+                start_col += len(exp.T.columns)  # add a col for the column header?
+
+        # write std data in seperate sheets with notes
+        for i, std in enumerate(std_dfs):
+            # write df to excel
+            std.to_excel(writer, f"std {i+1}", startcol=0, startrow=1, index=False)
 
 
 def main():
@@ -282,11 +379,12 @@ def main():
         x_unit="mM",
         y_unit="AU",
     )
+    std.plot()
 
     # initilazing class of example data
     TrMan5A = Enzyme(
         Name=" TrMan5A 10x Dil, 1h",
-        absorbance=[15, 12, 16] + np.random.rand(3, 1) * 4 + 3,
+        absorbance=[15, 15.5, 16] + np.random.rand(3, 1) * 4 + 3,
         regr=std.fit,
         dilution_factor=10,
         time=60.0,
@@ -300,7 +398,7 @@ def main():
 
     # shows the data in plot window
     TrMan5A.plot()
-    std.plot()
+
     plt.show()
 
 
