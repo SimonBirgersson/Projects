@@ -116,7 +116,9 @@ def load_hplc_data(path, skip_rows, filetype):
     return data, filename
 
 
-def plot_hpaec_chromatograms(data, plots, chromatograms):
+def plot_hpaec_chromatograms(
+    data, plots: list[str], chromatograms: list[str], xlim: list[int]
+):
     """
     plots chromatograms in DataFrame "data" in a vertical plot, with subplots as titled in "plots", containing chromatograms from dataframe columns "chromatograms"
     """
@@ -142,7 +144,7 @@ def plot_hpaec_chromatograms(data, plots, chromatograms):
                 )
 
         # show data between 1 and 5 minutes
-        plt.xlim([1.0, 5])
+        plt.xlim(xlim)
         # plt.xlabel("time [min]")
         plt.legend(loc="best")
         plt.ylabel("signal [nC]")

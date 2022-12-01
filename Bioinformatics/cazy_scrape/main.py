@@ -1,12 +1,11 @@
-# getting FASTA sequences of each fungal GH5 enzyme in a file
+# imports
 from datetime import date  # allows for time and day
 
-from accession_codes import get_accession_codes
-from genbank_fetch import get_fasta, get_fasta_in_chunks
+from accession_codes import get_all_accession_codes
+from genbank_FASTA_fetch import get_fasta, get_fasta_in_chunks
 from merge_fasta import merge_fasta
 
-# clears terminal window
-# os.system("clear")
+# ------------------------------- ENTER PATHS HERE ------------------------------------------------
 
 # All fungal GH5 sequences
 # export path for accession codes
@@ -19,26 +18,13 @@ PATH_ALL = "/Users/simon/OneDrive - Lund University/Fungal GH5 order/GH5_all.txt
 # path to file with smaller group to be used as key for getting accession codes
 PATH_FUNGAL = "/Users/simon/OneDrive - Lund University/Fungal GH5 order/GH5_fungal.txt"
 
-"""
-# Just GH5_7 fungal sequences
-# export path for accession codes
-FILE_PATH = "/Users/simon/OneDrive - Lund University/Fungal GH5 order/"
-FILE_NAME = "fungal_GH5_7_genbank_Acc_codes_"
+# --------------------------------------------------------------------------------------------------
 
-# path to file of all genbank accession codes for given family
-PATH_ALL = "/Users/simon/OneDrive - Lund University/Fungal GH5 order/GH5_7_all.txt"
-
-# path to file with smaller group to be used as key for getting accession codes
-PATH_FUNGAL = (
-    "/Users/simon/OneDrive - Lund University/Fungal GH5 order/GH5_7_fungal.txt"
-)
-
-"""
 # allowed length of single FASTA file, before merging chunks
 N = 360
 
 # call on function to get all accession codes in file, TAKES LONG TIME RUN ONLY ONCE.
-get_accession_codes(PATH_ALL, PATH_FUNGAL, "Eukaryota", FILE_PATH + FILE_NAME)
+get_all_accession_codes(PATH_ALL, PATH_FUNGAL, "Eukaryota", FILE_PATH + FILE_NAME)
 
 
 # check how many accession codes are in file:

@@ -1,0 +1,37 @@
+﻿HP,Pips,Background,Item A,item B
+1,1,Test Subject,spell: Magic Missile,Heavy armor
+1,2,Kitchen Forager,Light Armor,Cookpots
+1,3,Cage Dweller,spell: Be Understood,Bottle of Milk
+1,4,Hedge Witch,spell: heal,Incense stick
+1,5,Leather Worker,Light Armor,shears
+1,6,Street Tough,Dagger (light),Flask of coffee
+2,1,Mendicant Priest,spell: Restore,Holy symbol
+2,2,Beetleherd,Hireling: Loyal Beetle,Pole 6 inches
+2,3,Ale Brewer,Hireling: Drunken Torchbearer,small barrel of ale
+2,4,Fishermouse,Net,Needle (light)
+2,5,Blacksmith,Hammer (medium),Metal File
+2,6,Wireworker,Wire spool,Electric Lantern
+3,1,Wood Cutter,Axe (medium),Twine roll
+3,2,Bat Cultist,spell: Darkness,Bag of Bat Teeth
+3,3,Tin Miner,Pickaxe (medium),Lantern
+3,4,Trash Collector,Trashhook (heavy),Mirror
+3,5,Wall Rover,Fishhook,Thread spool
+3,6,Merchant,Hireling: Pack Rat,20p IOU from a noblemouse
+4,1,Raft Crew,Hammer (medium),Wooden spikes
+4,2,Worm Wrangler,Pole 6 inches,soap
+4,3,Sparrow Rider,Fishhook,goggles
+4,4,Sewer Guide,Metal File,Thread spool
+4,5,Prison Guard,Chain 6 inches,Spear (heavy)
+4,6,Fungur Farmer,Dried mushroom (ration),Spore mask
+5,1,Dam Builder,Shovel,Wooden spikes
+5,2,Cartographer,Quill & ink,Compass
+5,3,Trap Thief,Block of cheese,Glue
+5,4,Vagabond,Tent,Treasue map dubious
+5,5,Grain Farmer,Spear (Heavy),Whistle
+5,6,Message runner,Bedroll,Documents sealed
+6,1,Troubadour,Musical Instrument,Disguise kit
+6,2,Gambler,Set of loaded dice,Mirror
+6,3,Sap Tapper,Bucket,Wooden spikes
+6,4,Bee Keeper,Jar of Honey,Net
+6,5,Librarian,Scrap of Obscure Book,Quill & ink
+6,6,Pauper Noblemouse,Felt Hat,Perfume d
